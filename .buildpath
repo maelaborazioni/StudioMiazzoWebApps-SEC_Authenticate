@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry excluding=".stp/|medias/" kind="src" path=""/>
+	<buildpathentry exported="true" kind="prj" path="/MA_Shared"/>
+	<buildpathentry exported="true" kind="prj" path="/svy_nav_globals"/>
+	<buildpathentry exported="true" kind="prj" path="/svy_nav_navigation"/>
+</buildpath>
