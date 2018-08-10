@@ -1,0 +1,15 @@
+customProperties:"formComponent:false",
+encapsulation:60,
+items:[
+{
+height:480,
+partType:5,
+typeid:19,
+uuid:"5A2FD9D3-753A-4D46-A3AC-2AA31CCFBAED"
+}
+],
+name:"client_disconnection_ws",
+showInMenu:true,
+styleName:"leaf_style",
+typeid:3,
+uuid:"6D57B7C4-3F3A-421F-B6B0-29254F8388BC"
