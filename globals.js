@@ -71,9 +71,19 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
             msgText += (dalleOre && alleOre) ? ' dalle ore ' + vDalleOre + ' alle ore ' + vAlleOre : '';
             msgTextEn += (dalleOre && alleOre) ? ' since ' + vDalleOre + ' until ' + vAlleOre : '';
             
-			msgText += " è stata " + (revocata ?  'revocata' : (statoRichiesta == 1 ? 'accettata ' : ' rifiutata '));
-			msgTextEn += " has been " + (revocata ?  'revoked' : (statoRichiesta == 1 ? 'accepted ' : ' refused '));
-			
+            // caso eliminazione richiesta da evadere
+            if(statoRichiesta == -1)
+            {
+            	msgText += " è stata eliminata ";
+				msgTextEn += " has been deleted ";
+            }
+            // gestione evasione di una richiesta 
+            else
+            {
+				msgText += " è stata " + (revocata ?  'revocata' : (statoRichiesta == 1 ? 'accettata ' : ' rifiutata '));
+				msgTextEn += " has been " + (revocata ?  'revoked' : (statoRichiesta == 1 ? 'accepted ' : ' refused '));
+            }
+            
 			msgText += " dal responsabile <b>" + globals.getUserName(approvatoDa) + "</b> in data " + (revocata ? utils.dateFormat(globals.TODAY,globals.EU_DATEFORMAT) : utils.dateFormat(approvatoIl, globals.EU_DATEFORMAT));
 			msgTextEn += " by the manager <b>" + globals.getUserName(approvatoDa) + "</b> on " + (revocata ? utils.dateFormat(globals.TODAY,globals.EU_DATEFORMAT) : utils.dateFormat(approvatoIl, globals.EU_DATEFORMAT));
 						
