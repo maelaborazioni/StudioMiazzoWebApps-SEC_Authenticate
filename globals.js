@@ -42,8 +42,8 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
 		if (emailaddress && plugins.mail.isValidEmailAddress(emailaddress)) 
 		{
 			var properties = globals.setSparkPostSmtpProperties();
-			var subject = "Presenza Semplice Studio Miazzo - Comunicazione gestione richiesta ferie e permessi";
-			var subjectEn = "Advice for new request - Presenza Semplice Studio Miazzo";
+			var subject = "Presenza Semplice - Comunicazione gestione richiesta ferie e permessi";
+			var subjectEn = "Advice for new request - Presenza Semplice";
 			
 			var msgText = "plain msg<html>";
 			var msgTextEn = msgText; //"English version : <br/><p style = \"font-size : 14px\">";
@@ -102,7 +102,7 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
 			// invia all'utente direttamente interessato 
 			var success = plugins.mail.sendMail
 			(emailaddress,
-				'Ferie e permessi <assistenza@studiomiazzo.it>',
+				'Ferie e permessi <noreply@peoplegest.it>',
 				englishLang ? subjectEn : subject,
                 englishLang ? msgTextEn : msgText,
 				null,
@@ -135,8 +135,8 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
    	if(statoRichiesta == 1 && confirmsid && confirmsid.length > 0
    		|| statoRichiesta == 0 && refusesid && refusesid.length > 0)
    	{
-   		/** @type {Array<Number>} */
-   		var arrId = statoRichiesta == 1 ? confirmsid.split(',') : refusesid.split(',');
+   		0/** @type {Array<Number>} */
+   		var arrId = statoRichiesta == 1 ? confirmsid : refusesid;
 		for(var o = 0; o < arrId.length; o++)
 		{
 			// comunicazione avvenuta conferma o rifiuto della richiesta agli osservatori
@@ -148,8 +148,8 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
 				if (plugins.mail.isValidEmailAddress(otheremailaddress)) 
 				{
 					var otherproperties = globals.setSparkPostSmtpProperties();
-					var othersubject = "Presenza Semplice Studio Miazzo - Comunicazione gestione richiesta ferie e permessi";
-					var othersubjectEn = "Advice for new request - Presenza Semplice Studio Miazzo";
+					var othersubject = "Presenza Semplice - Comunicazione gestione richiesta ferie e permessi";
+					var othersubjectEn = "Advice for new request - Presenza Semplice";
 					var othermsgText = "plain msg<html>";
 					var othermsgTextEn = othermsgText; //"English version : <br/><p style = \"font-size : 14px\">";
 					
@@ -198,7 +198,7 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
 					// invia all'utente direttamente interessato 
 					var othersuccess = plugins.mail.sendMail
 					(otheremailaddress,
-						'Ferie e permessi <assistenza@studiomiazzo.it>',
+						'Ferie e permessi <noreply@peoplegest.it>',
 						englishLangOther ? othersubjectEn : othersubject,
 						englishLangOther ? othermsgTextEn : othermsgText,
 						null,
@@ -222,7 +222,7 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
 				}
 				else
 				{
-					application.output('i18n:ma.msg.notValidEmailAddress');
+					application.output('i18n:ma.msg.notValidEmailAddress',LOGGINGLEVEL.ERROR);
 					globals.ma_utl_showWarningDialog('i18n:ma.msg.notValidEmailAddress', 'Comunicazione gestione richiesta');
 				}
 			}
@@ -245,7 +245,7 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
 //					if (otheremailaddress && plugins.mail.isValidEmailAddress(otheremailaddress)) 
 //					{
 //						var otherproperties = globals.setSmtpProperties();
-//						var othersubject = "Presenza Semplice Studio Miazzo - Comunicazione gestione richiesta ferie e permessi";
+//						var othersubject = "Presenza Semplice - Comunicazione gestione richiesta ferie e permessi";
 //						var othermsgText = "plain msg<html>Gentile <b>" + globals.getUserName(arrOthersId[o]) + "</b>, <br/>";
 //						othermsgText += " la richiesta di <i>" + globals.getDescrizioneEvento(idevento) + '</i>';  
 //						othermsgText += ((giornoDal == giornoAl) ? " relativa al giorno " : " relativa al periodo dal giorno ") + '<b>';
@@ -266,7 +266,7 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
 //						// invia all'utente direttamente interessato 
 //						var othersuccess = plugins.mail.sendMail
 //						(otheremailaddress,
-//							'Ferie e permessi <assistenza@studiomiazzo.it>',
+//							'Ferie e permessi <noreply@peoplegest.it>',
 //							othersubject,
 //							othermsgText,
 //							null,
