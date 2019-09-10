@@ -12,7 +12,7 @@ function ws_create()
 	var strArgs = args['username'] + ':' + args['owner'] + ':' + args['organization'] + ':' 
 	              + application.getUUID() + ':' + now.getTime();
 	
-	var options = scopes.crypto.createOptions().setAlgorithmName(scopes.crypto.ALGORITHM_NAMES.AES);
+    var options = scopes.crypto.createOptions().setAlgorithmName(scopes.crypto.ALGORITHM_NAMES.AES);
 	var key = scopes.crypto.createOptions().setAlgorithmName(scopes.crypto.ALGORITHM_NAMES.AES).getKeyAsString();
 	options.setKey(key);
 	
@@ -22,5 +22,5 @@ function ws_create()
 	// resulting text (base-64-encoded)
 	var result = encrypted.getValue();
 	
-	return {value : true, crypted : result};
+	return { value : true, crypted : result };
 }
