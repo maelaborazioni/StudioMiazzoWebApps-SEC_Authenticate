@@ -133,9 +133,9 @@ function gestisciInvioComunicazione(dataRichiesta,statoRichiesta,approvatoIl,app
 	
 	// invia comunicazione agli altri utenti osservatori specificati per l'avviso di conferma o di rifiuto
    	if(statoRichiesta == 1 && confirmsid && confirmsid.length > 0
-   		|| statoRichiesta == 0 && refusesid && refusesid.length > 0)
+   		|| statoRichiesta == 2 && refusesid && refusesid.length > 0)
    	{
-   		0/** @type {Array<Number>} */
+   		/** @type {Array<Number>} */
    		var arrId = statoRichiesta == 1 ? confirmsid : refusesid;
 		for(var o = 0; o < arrId.length; o++)
 		{

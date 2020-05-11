@@ -274,7 +274,8 @@ function onHide(event)
 	// Verifica per le ditte del gruppo se sono presenti sull'ftp dati inviati dalla sede
 	// e in caso affermativo lancia la ricezione automatica (nell'ordine tabelle generali/ditta/certificati telematici)
 	if (globals.ma_utl_hasKey(globals.Key.RILEVAZIONE_PRESENZE)
-		&& globals.ma_utl_getSoftware(globals.Module.RILEVAZIONE_PRESENZE) != globals.ModuleSoftware.PRESENZA_SEMPLICE_LITE) 
+		&& globals.ma_utl_getSoftware(globals.Module.RILEVAZIONE_PRESENZE) != globals.ModuleSoftware.PRESENZA_SEMPLICE_LITE
+		&& !globals.ma_utl_hasKey(globals.Key.FTP_NO_CONTROLLO)) 
 		globals.verificaDatiFtp();
 	return true;
 }
